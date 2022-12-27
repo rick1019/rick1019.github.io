@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://rick1019.gitee.io/img/cover0.jpg">
 <meta property="article:published_time" content="2022-12-26T13:18:20.000Z">
-<meta property="article:modified_time" content="2022-12-27T10:55:06.613Z">
+<meta property="article:modified_time" content="2022-12-27T14:37:06.075Z">
 <meta property="article:author" content="Rick">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-12-27 18:55:06'
+  postUpdate: '2022-12-27 22:37:06'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -142,7 +142,7 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/passagetopimg0.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Rick's space</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">PWN基础之函数调用栈与栈溢出</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-26T13:18:20.000Z" title="发表于 2022-12-26 21:18:20">2022-12-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-27T10:55:06.613Z" title="更新于 2022-12-27 18:55:06">2022-12-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/PWN/">PWN</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PWN基础之函数调用栈与栈溢出"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="PWN常用工具："><a href="#PWN常用工具：" class="headerlink" title="PWN常用工具："></a>PWN常用工具：</h2><ul>
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/passagetopimg0.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Rick's space</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情连接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">PWN基础之函数调用栈与栈溢出</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-26T13:18:20.000Z" title="发表于 2022-12-26 21:18:20">2022-12-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-27T14:37:06.075Z" title="更新于 2022-12-27 22:37:06">2022-12-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/PWN/">PWN</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PWN基础之函数调用栈与栈溢出"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="PWN常用工具："><a href="#PWN常用工具：" class="headerlink" title="PWN常用工具："></a>PWN常用工具：</h2><ul>
 <li>IDA pro</li>
 <li>pwntools</li>
 <li>pwndbg</li>
@@ -155,19 +155,19 @@
 <h2 id="入门学习网站及推荐书籍："><a href="#入门学习网站及推荐书籍：" class="headerlink" title="入门学习网站及推荐书籍："></a>入门学习网站及推荐书籍：</h2><p><a target="_blank" rel="noopener" href="https://ctf-wiki.org/#/introduction">CTF Wiki</a></p>
 <p>《程序员的自我修养》</p>
 <h2 id="函数调用栈与栈溢出"><a href="#函数调用栈与栈溢出" class="headerlink" title="函数调用栈与栈溢出"></a>函数调用栈与栈溢出</h2><h3 id="栈-satck-："><a href="#栈-satck-：" class="headerlink" title="栈(satck)："></a>栈(satck)：</h3><p>​		<strong>栈(stack)<strong>是一种先进后出的数据结构，主要操作有入栈(push)和出栈(pop)，esp寄存器保存栈底地址，esp寄存器保存栈顶地址。</strong>程序的栈是从进程地址空间的高地址向低地址增长的</strong>，当执行pop操作实esp+1，当执行push操作时esp+1。</p>
-<p><img src="./blog/2022/12/26/PWNnote/stack1.png"></p>
+<p><img src="/2022/12/26/PWNnote/12/26/PWNnote/stack1.png"></p>
 <p>​		高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。</p>
 <h3 id="函数调用栈："><a href="#函数调用栈：" class="headerlink" title="函数调用栈："></a>函数调用栈：</h3><p>​		函数调用栈是指程序运行时内存一段连续的区域，用来保存函数运行时的状态信息，包括函数参数与局部变量等。称之为“栈”是因为发生函数调用时，调用函数（caller）的状态被保存在栈内，被调用函数（callee）的状态被压入调用栈的栈顶。在函数调用结束时，栈顶的函数（callee）状态被弹出，栈顶恢复到调用函数（caller）的状态函数调用栈在内存中从高地址向低地址生长，所以栈顶对应的内存地址在压栈时变小，退栈时变大。</p>
-<p><img src="./blog/2022/12/26/PWNnote/stack2.png"></p>
+<p><img src="/2022/12/26/PWNnote/stack2.png"></p>
 <p>​		  程序的执行过程可看作连续的函数调用。当一个函数执行完毕时，程序要回到调用指令的下一条指令(紧接call指令)处继续执行。函数调用过程通常使用堆栈实现，每个用户态进程对应一个调用栈结构(call stack)。编译器使用堆栈传递函数参数、保存返回地址、临时保存寄存器原有值(即函数调用的上下文)以备恢复以及存储本地局部变量。不同处理器和编译器的堆栈布局、函数调用方法都可能不同，但堆栈的基本概念是一样的。</p>
 <h3 id="栈帧结构："><a href="#栈帧结构：" class="headerlink" title="栈帧结构："></a>栈帧结构：</h3><p>​		函数调用经常是嵌套的，在同一时刻，堆栈中会有多个函数的信息。每个未完成运行的函数占用一个独立的连续区域，称作栈帧(Stack Frame)。栈帧是堆栈的逻辑片段，当调用函数时逻辑栈帧被压入堆栈, 当函数返回时逻辑栈帧被从堆栈中弹出。栈帧存放着函数参数，局部变量及恢复前一栈帧所需要的数据等。</p>
 <p>​		编译器利用栈帧，使得函数参数和函数中局部变量的分配与释放对程序员透明。编译器将控制权移交函数本身之前，插入特定代码将函数参数压入栈帧中，并分配足够的内存空间用于存放函数中的局部变量。使用栈帧的一个好处是使得递归变为可能，因为对函数的每次递归调用，都会分配给该函数一个新的栈帧，这样就巧妙地隔离当前调用与上次调用。</p>
 <p>​		栈帧的边界由栈帧基地址指针EBP和堆栈指针ESP界定(指针存放在相应寄存器中)。EBP指向当前栈帧底部(高地址)，在当前栈帧内位置固定；ESP指向当前栈帧顶部(低地址)，当程序执行时ESP会随着数据的入栈和出栈而移动。因此函数中对大部分数据的访问都基于EBP进行。</p>
 <p>​		为更具描述性，以下称EBP为帧基指针， ESP为栈顶指针，并在引用汇编代码时分别记为%ebp和%esp。</p>
 <p> 函数调用栈的内存布局如图所示：</p>
-<p><img src="./blog/2022/12/26/PWNnote/fame.jpg"></p>
+<p><img src="/2022/12/26/PWNnote/fame.jpg"></p>
 <p>函数调用时的入栈顺序如下图：</p>
-<p><img src="./blog/2022/12/26/PWNnote/picture0.png"></p>
+<p><img src="/2022/12/26/PWNnote/picture0.png"></p>
 <p><strong>栈在函数调用中的作用</strong>：参数传递、局部变量分配、保存调用的返回地址、保存寄存器以供恢复。</p>
 <p><strong>需要注意的是，32 位和 64 位程序有以下简单的区别：</strong></p>
 <ul>
@@ -187,56 +187,56 @@
 <li>写入的数据大小没有被良好地控制。</li>
 </ul>
 <h3 id="示例一：攻防世界新手区-3-level0"><a href="#示例一：攻防世界新手区-3-level0" class="headerlink" title="示例一：攻防世界新手区 3-level0"></a>示例一：攻防世界新手区 3-level0</h3><p>首先运行一下题目所给的程序</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672118349620.png" alt="1672118349620"></p>
+<p><img src="/2022/12/26/PWNnote/1672118349620.png" alt="1672118349620"></p>
 <p>程序输出一句Hello，World然后给出一个输入点，随便输入几个字母后程序结束。接下来开始对程序进行分析，使用checksec命令查看该程序是32位还是64位，开启了哪些保护。</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672118512608.png" alt="1672118512608"></p>
+<p><img src="/2022/12/26/PWNnote/1672118512608.png" alt="1672118512608"></p>
 <p>此程序为64位使用IDA pro 64位来对其进行静态调试</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672118746202.png" alt="1672118746202"></p>
+<p><img src="/2022/12/26/PWNnote/1672118746202.png" alt="1672118746202"></p>
 <p>代码中提示有一个vulnerable_function()函数进入查看</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672119621367.png" alt="1672119621367"></p>
+<p><img src="/2022/12/26/PWNnote/1672119621367.png" alt="1672119621367"></p>
 <p>buf的长度为0x80字节但是read()函数允许往buf中输入0x200字节数据很明显此处存在栈溢出漏洞</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672119784529.png" alt="1672119784529"></p>
+<p><img src="/2022/12/26/PWNnote/1672119784529.png" alt="1672119784529"></p>
 <p>左侧函数列表中可以看到程序存在callsystem，这个函数很可疑进入查看一下他的函数体</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672119898423.png" alt="1672119898423"></p>
+<p><img src="/2022/12/26/PWNnote/1672119898423.png" alt="1672119898423"></p>
 <p>该函数调用了system(“&#x2F;bin&#x2F;sh”)我们可以利用此函数来get shell。所以我们的整体思路是向buf处输入0x80字节的数据填满buf此时在继续输入0x8字节的数据造成溢出覆盖ebp处的数据再继续输入数据把返回地址处的数据覆盖为callsystem()的地址，这样vulnerable_function()函数原本要返回到main()函数但是却返回到了callsystem()函数来执行callsystem()</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672134467555.png" alt="1672134467555"></p>
+<p><img src="/2022/12/26/PWNnote/1672134467555.png" alt="1672134467555"></p>
 <h3 id="exp："><a href="#exp：" class="headerlink" title="exp："></a>exp：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context.log_level=<span class="string">&quot;debug&quot;</span></span><br><span class="line"></span><br><span class="line">io = process(<span class="string">&quot;./3-level0&quot;</span>)</span><br><span class="line">gdb.attach(io)</span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0x80</span> + <span class="string">b&#x27;a&#x27;</span>*<span class="number">8</span> + p64(<span class="number">0x40059A</span>)</span><br><span class="line">io.recvuntil(<span class="string">&quot;Hello, World\n&quot;</span>)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
 
 <h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>我们通过gdb来看一下函数调用栈在调用vulnerable_function()函数时是如何工作的，它的内容都发生了哪些变化。</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672120841434.png" alt="1672120841434"></p>
+<p><img src="/2022/12/26/PWNnote/1672120841434.png" alt="1672120841434"></p>
 <p>在0x4005a6（vulnerable_function()的函数地址）处下断点然后开始运行</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672120997701.png" alt="1672120997701"></p>
+<p><img src="/2022/12/26/PWNnote/1672120997701.png" alt="1672120997701"></p>
 <p>main函数调用vulnerable_function()函数，所以main函数为主调函数（caller function）vulnerable_function()为被调函数（callee function）。当调用vulnerable_function()函数时首先将rbp入栈用来记住此时rbp的位置</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672121523060.png" alt="1672121523060"></p>
+<p><img src="/2022/12/26/PWNnote/1672121523060.png" alt="1672121523060"></p>
 <p>执行push rbp之后rsp寄存器的内容是栈顶指针，该指针指向此时栈顶的内存区域而这个区域存储的内容为rbp寄存器的内容即主调函数栈帧的栈基地址。下一步执行mov rbp,rsp指令，执行之后rbp指向了栈顶位置这个时候的rbp寄存器的内容为被调函数vulnerable_function()的栈帧栈基地址。</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672122178654.png" alt="1672122178654"></p>
-<p>如图所示，rbp和rsp指向同一位置这也意味着此时的栈帧为空栈。接下来就是被调函数的栈帧内容我们通过<img src="./blog/2022/12/26/PWNnote/1672119621367.png" alt="1672119621367">这一步可以知道vulnerable_function()函数没有参数只有0x80字节大小的局部变量和用了read()函数。函数调用栈的下一步将会为局部变量buf分配0x80字节大小的内存空间即指令add rsp,-0x80</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672122471318.png" alt="1672122471318"></p>
-<p>这是被调函数vulnerable_function()的栈帧结构如图所示对应<img src="./blog/2022/12/26/PWNnote/1672122652131.png" alt="1672122652131">这一部分。接下来vulnerable_function()函数会调用read()函数，这个时候vulnerable_function()函数为主调函数（caller function）read()函数为被调函数（callee function）read()函数 是有参数的，我们来看一看有参数的函数在函数调用栈是什么样的</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672123169573.png" alt="1672123169573"></p>
+<p><img src="/2022/12/26/PWNnote/1672122178654.png" alt="1672122178654"></p>
+<p>如图所示，rbp和rsp指向同一位置这也意味着此时的栈帧为空栈。接下来就是被调函数的栈帧内容我们通过<img src="/2022/12/26/PWNnote/1672119621367.png" alt="1672119621367">这一步可以知道vulnerable_function()函数没有参数只有0x80字节大小的局部变量和用了read()函数。函数调用栈的下一步将会为局部变量buf分配0x80字节大小的内存空间即指令add rsp,-0x80</p>
+<p><img src="/2022/12/26/PWNnote/1672122471318.png" alt="1672122471318"></p>
+<p>这是被调函数vulnerable_function()的栈帧结构如图所示对应<img src="/2022/12/26/PWNnote/1672122652131.png" alt="1672122652131">这一部分。接下来vulnerable_function()函数会调用read()函数，这个时候vulnerable_function()函数为主调函数（caller function）read()函数为被调函数（callee function）read()函数 是有参数的，我们来看一看有参数的函数在函数调用栈是什么样的</p>
+<p><img src="/2022/12/26/PWNnote/1672123169573.png" alt="1672123169573"></p>
 <p>由于64位程序函数的传参规则是：64位汇编在<strong>当参数少于7个时</strong>， 参数从左到右放入寄存器: rdi, rsi, rdx, rcx, r8, r9。当参数为7个以上时， 前 6 个与前面一样， 但后面的依次<strong>从 “右向左”</strong> 放入栈中，即和32位汇编一样。图中lea rax,[rbp-0x80]的作用是将地址 <strong>rbp-0x80</strong> 处的内容取出来放到rax寄存器里面。（<em>补充一个知识点：加载有效地址（load effective address）指令就是lea,他的指令形式就是从内存读取数据到寄存器，但是实际上他没有引用内存，而是将有效地址写入到目的的操作数，就像是C语言地址操作符&amp;一样的功能，可以获取数据的地址。</em>）rdi，rsi，rdx的值分别为read(0,&amp;buf,0x200)的三个参数</p>
 <p>接下来执行leave指令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leave 等价于 mov rsp rbp;pop rbp;</span><br></pre></td></tr></table></figure>
 
-<p><img src="./blog/2022/12/26/PWNnote/1672129600916.png" alt="1672129600916"></p>
+<p><img src="/2022/12/26/PWNnote/1672129600916.png" alt="1672129600916"></p>
 <p>执行leave之前的栈结构如上图，执行之后：</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672129736682.png" alt="1672129736682"></p>
+<p><img src="/2022/12/26/PWNnote/1672129736682.png" alt="1672129736682"></p>
 <p>下一步执行ret</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ret 等价于 pop rip;</span><br></pre></td></tr></table></figure>
 
-<p><img src="./blog/2022/12/26/PWNnote/1672129958546.png" alt="1672129958546"></p>
+<p><img src="/2022/12/26/PWNnote/1672129958546.png" alt="1672129958546"></p>
 <p>上图为vulnerable_function()函数执行结束后返回后的栈结构，下图为调用vulnerable_function()函数之前的栈结构，通过对比可以看到通过leave ret两条指令函数调用栈恢复到了调用vulnerable_function()函数之前的样子。</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672130334146.png" alt="1672130334146"></p>
+<p><img src="/2022/12/26/PWNnote/1672130334146.png" alt="1672130334146"></p>
 <p>以上为vulnerable_function()函数调用过程中，函数调用栈的栈帧变化的整个过程。</p>
 <p>下面分析一下在我们发送了payload的情况下栈中的情况是什么样的</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672133334922.png" alt="1672133334922"></p>
+<p><img src="/2022/12/26/PWNnote/1672133334922.png" alt="1672133334922"></p>
 <p>read()函数在输入payload之前，栈是这样的。当输入payload之后可以看到rbp已经被覆盖为了0x6262626262626262如下图：</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672133459467.png" alt="1672133459467"></p>
-<p>查看此时的栈结构：<img src="./blog/2022/12/26/PWNnote/1672133641773.png" alt="1672133641773"></p>
-<p><img src="./blog/2022/12/26/PWNnote/1672134467555.png" alt="1672134467555"></p>
+<p><img src="/2022/12/26/PWNnote/1672133459467.png" alt="1672133459467"></p>
+<p>查看此时的栈结构：<img src="/2022/12/26/PWNnote/1672133641773.png" alt="1672133641773"></p>
+<p><img src="/2022/12/26/PWNnote/1672134467555.png" alt="1672134467555"></p>
 <p>对比我们之前画的示意图完全符合我们精心布置的栈结构，当执行leave时rbp的值赋给rsp，rsp&#x3D;rbp&#x3D;0x7fffef184aa0；rbp&#x3D;0x6262626262626262 rsp&#x3D;rsp+0x8&#x3D;0x7fffef184aa8；</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672137260247.png" alt="1672137260247">然后再执行ret时rip&#x3D;0x40059a 即下一步执行调用callsystem函数。</p>
-<p><img src="./blog/2022/12/26/PWNnote/1672137382507.png" alt="1672137382507"></p>
+<p><img src="/2022/12/26/PWNnote/1672137260247.png" alt="1672137260247">然后再执行ret时rip&#x3D;0x40059a 即下一步执行调用callsystem函数。</p>
+<p><img src="/2022/12/26/PWNnote/1672137382507.png" alt="1672137382507"></p>
 <h3 id="细节问题："><a href="#细节问题：" class="headerlink" title="细节问题："></a>细节问题：</h3><ul>
 <li>64位汇编在<strong>当参数少于7个时</strong>， 参数从左到右放入寄存器: rdi, rsi, rdx, rcx, r8, r9。当参数为7个以上时， 前 6 个与前面一样， 但后面的依次<strong>从 “右向左”</strong> 放入栈中，即和32位汇编一样。同时在构造64位程序的payload时注意栈平衡。</li>
 <li>rax 可以用来保存函数的返回值</li>
